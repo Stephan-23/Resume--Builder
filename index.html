@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Builder</h1>
+
+        <!-- Template Selection -->
+        <div class="template-selection">
+            <h2>Choose a Template</h2>
+            <select id="template-select">
+                <option value="template1">Template 1 (Basic)</option>
+                <option value="template2">Template 2 (With Picture)</option>
+                <option value="template3">Template 3 (With Summary)</option>
+            </select>
+        </div>
+
+        <!-- Resume Form -->
+        <div class="resume-form">
+            <label>Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label>Phone:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+
+            <label>LinkedIn:</label>
+            <input type="url" id="linkedin" placeholder="Enter your LinkedIn profile URL">
+
+            <label>GitHub:</label>
+            <input type="url" id="github" placeholder="Enter your GitHub profile URL">
+
+            <label>Portfolio:</label>
+            <input type="url" id="portfolio" placeholder="Enter your portfolio URL">
+
+            <label>Skills:</label>
+            <textarea id="skills"></textarea>
+
+            <label>Experience:</label>
+            <textarea id="experience" placeholder="Your work experience"></textarea>
+
+            <label>Education:</label>
+            <textarea id="education" placeholder="Your education background"></textarea>
+
+            <!-- Picture Upload (for Template 2) -->
+            <div id="picture-section" class="hidden">
+                <label>Upload Picture:</label>
+                <input type="file" id="picture" accept="image/*">
+            </div>
+
+            <!-- Summary (for Template 3) -->
+            <div id="summary-section" class="hidden">
+                <label>Summary:</label>
+                <textarea id="summary" placeholder="Write a brief summary about yourself"></textarea>
+            </div>
+
+            <button onclick="generateResume()">Generate Resume</button>
+        </div>
+
+        <!-- Resume Preview -->
+        <div id="resume-preview">
+            <!-- Template 1 (Basic) -->
+            <div id="template1-preview" class="template">
+                <h2 id="res-name"></h2>
+                <p>Email: <span id="res-email"></span></p>
+                <p>Phone: <span id="res-phone"></span></p>
+                <p>LinkedIn: <a id="res-linkedin" href="#" target="_blank"></a></p>
+                <p>GitHub: <a id="res-github" href="#" target="_blank"></a></p>
+                <p>Portfolio: <a id="res-portfolio" href="#" target="_blank"></a></p>
+                <h3>Skills</h3>
+                <p id="res-skills"></p>
+                <h3>Experience</h3>
+                <p id="res-experience"></p>
+                <h3>Education</h3>
+                <p id="res-education"></p>
+            </div>
+
+            <!-- Template 2 (With Picture) -->
+            <div id="template2-preview" class="template hidden">
+                <div class="header">
+                    <img id="res-picture-img" src="" alt="Profile Picture">
+                    <div>
+                        <h2 id="res-name2"></h2>
+                        <p>Email: <span id="res-email2"></span></p>
+                        <p>Phone: <span id="res-phone2"></span></p>
+                    </div>
+                </div>
+                <div class="links">
+                    <p>LinkedIn: <a id="res-linkedin2" href="#" target="_blank"></a></p>
+                    <p>GitHub: <a id="res-github2" href="#" target="_blank"></a></p>
+                    <p>Portfolio: <a id="res-portfolio2" href="#" target="_blank"></a></p>
+                </div>
+                <h3>Skills</h3>
+                <p id="res-skills2"></p>
+                <h3>Experience</h3>
+                <p id="res-experience2"></p>
+                <h3>Education</h3>
+                <p id="res-education2"></p>
+            </div>
+
+            <!-- Template 3 (With Summary) -->
+            <div id="template3-preview" class="template hidden">
+                <h2 id="res-name3"></h2>
+                <p>Email: <span id="res-email3"></span></p>
+                <p>Phone: <span id="res-phone3"></span></p>
+                <p>LinkedIn: <a id="res-linkedin3" href="#" target="_blank"></a></p>
+                <p>GitHub: <a id="res-github3" href="#" target="_blank"></a></p>
+                <p>Portfolio: <a id="res-portfolio3" href="#" target="_blank"></a></p>
+                <h3>Summary</h3>
+                <p id="res-summary-text"></p>
+                <h3>Skills</h3>
+                <p id="res-skills3"></p>
+                <h3>Experience</h3>
+                <p id="res-experience3"></p>
+                <h3>Education</h3>
+                <p id="res-education3"></p>
+            </div>
+
+            <button onclick="downloadResume()">Download PDF</button>
+        </div>
+    </div>
+
+    <script src="scripts/mainscript.js"></script>
+</body>
+</html>
